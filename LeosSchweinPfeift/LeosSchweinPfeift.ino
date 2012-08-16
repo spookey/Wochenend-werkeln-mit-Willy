@@ -1,9 +1,9 @@
 #include "oinkoink.h"
 
 // Pinbelegung
-int spk = 7;	//Lautsprecher
-int led = 8;	//Leuchte
-int sw = 12;	//Schalter
+int spk = 10;	//Lautsprecher
+int led = 12;	//Leuchte
+int sw = 11;	//Schalter
 int sws = 0;	//Zustand des Schalters
 int stdd = 75;	//Standardmäßige Pause
 
@@ -37,7 +37,7 @@ void ledblink(int i)
 	analogWrite(led, 255); delay(stdd);
 	analogWrite(led, 0);
 
-        delay(1000);
+	delay(1000);
 	
 }
 
@@ -47,9 +47,11 @@ void setup()
 }
 
 void loop()
-{	sws = digitalRead(sw);
+{	sws += digitalRead(sw);
 	delay(10);
-	if(sws)
-	{	jingle();
+	if(sws == 100)
+	{	sws = 0;
+		jingle();
+		sws = 0;
 	}
 }
