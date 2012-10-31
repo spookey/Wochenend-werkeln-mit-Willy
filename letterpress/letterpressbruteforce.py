@@ -34,14 +34,14 @@ def writeout(lst, name, noc):
 	t.close()
 
 def main():
-	dict = mkdict('dict.txt')
+	dc = mkdict('dict.txt')
 	
 	src = raw_input("Letterpress Characters: ")
 	
 	w = sorted(src)
 	result = []
-	for k in dict.keys():
-		if contains(w, k): result.extend(dict[k])
+	for k in dc.keys():
+		if contains(w, k): result.extend(dc[k])
 	
 	writeout(sorted(result), str(src), 8)
 
