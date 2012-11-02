@@ -6,9 +6,9 @@ So richtig Python kann ich ja nicht, aber da nur Übung den Meister macht habe i
 **Du willst auch schummeln?**
 *Dann brauchst du ein Wörterbuch!*
 
-Als erstes wird die Letterpress.ipa mit dem Entpacker des Vertrauens ausgepackt, dann finden sich unter ./Payload/Letterpress.app/o/ eine menge Textdateien. Dies ist das Wörterbuch für Letterpress.
+Als erstes wird die Letterpress.ipa mit dem Entpacker des geringsten Misstrauens ausgepackt. Es finden sich dann unter /Payload/Letterpress.app/o/ eine Menge Textdateien. Dies ist das (aufgeteilte) Wörterbuch für Letterpress.
 
-Um sich sein eigenes zu backen reicht eigentlich
+Um sich sein eigenes zu backen reicht eigentlich:
 
 `cat *.txt > dict.txt`
 
