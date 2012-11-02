@@ -1,77 +1,74 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from collections import defaultdict
 import argparse
+import sys
 
-# Wörterbuch erzeugen
-def mkDict(file):
-	d = defaultdict(list)
-	with open(file, 'r') as f:
+def mklist(file):
+	l = []
+	try: f = open(file, 'r')
+	except IOError, err: sys.exit('ERROR! %s could not be read - %s\n' %(file, err))
+	else:
 		for line in f.readlines():
-			if line[0].isupper(): continue
 			word = line.strip()
-			key = ''.join(sorted(word.lower()))
-			d[key].append(word)
-	return d
+			l.append(word)
+		f.close()
+	return l
 
-# Sucht Wörter aus dem Wörterbuch raus (Achtung: Listen müssen sortiert sein!)
-def contains(word, candidate):
-	wchars = (c for c in word)
-	for cc in candidate:
-		while(True):
-			try:
-				wc = wchars.next()
-			except StopIteration:
-				return False
-			if wc < cc: continue
-			if wc == cc: break
-			return False
-	return True
 
-# Ergebins auf Platte schreiben (lst: Liste der Elemente, name: Dateiname, noc: Mindestanzahl d. Buchstaben)
 def writeout(lst, name, noc):
-	t = open(name+'.txt', 'w')
-	for line in lst:
-		if len(line) >= noc: t.write(line+'\n')
-	t.close()
+	try: t = open(name+'.txt', 'w')
+	except IOError, err: sys.exit('ERROR! %s could not be written - %s\n' %(file, err))
+	else:
+		for line in lst:
+			if len(line) >= noc:
+				t.write(line+'\n')
+		t.close()
 
-def argParse():
+
+def aparse():
 	parser = argparse.ArgumentParser(description='Letterpress')
 	parser.add_argument('-c', action='store', dest='charseq', help='Gib die 25 Buchstaben gleich als Argument an')
 	parser.add_argument('-d', action='store', dest='dictpath', help='Ort der dict.txt')
+	parser.add_argument('-o', action='store', dest='out', help='Wohin soll die Ausgabe gespeichert werden ?')
+	parser.add_argument('-n', action='store', dest='noc', help='Buchstaben mindestlänge')
+	parser.add_argument('--version', action='version', version='%(prog)s - it\'s over 9000!!!!1!einself!')
 	return parser.parse_args()
 
-# Die schlimme Main-Funktion
+def setdefault(default, fallback):
+	if default == None: return fallback
+	else: return default
+
 def main():
-	eingabe = argParse()
+	entry = aparse()
 
-	if not eingabe.charseq:
-		src = raw_input("Letterpress Characters: ")
-	else:
-		src = eingabe.charseq	
-	
-	if not eingabe.dictpath == None:
-		dtxt = eingabe.dictpath
-	else:
-		dtxt = './dict.txt'
-	
-	print eingabe
+	if entry.charseq is None: chars = raw_input("Letterpress Characters: ")
+	else: chars = entry.charseq
 
-	print src
-	print dtxt
+	wordlist = mklist(setdefault(entry.dictpath, 'dict.txt'))
+	noc = setdefault(int(entry.noc), 8)
+	outlist = setdefault(entry.out, chars)
 
-	dc = mkDict(dtxt) # Das Wörterbuch (Readme.md beachten)
-	ml = 8 # Mindestanzahl von Buchstaben, die ein Wort haben soll
-	
-	
-	
-	w = sorted(src)
+
 	result = []
-	for k in dc.keys():
-		if contains(w, k): result.extend(dc[k])
+
+	for word in wordlist:
+		if set(word).issubset(set(chars)):
+			for letter in word:
+				if word.count(letter) <= chars.count(letter):
+					goodWord = True
+				else:
+					goodWord = False
+					break
+
+		else:
+			goodWord = False
+			
+		if goodWord:
+			result.append(word)
 	
-	writeout(sorted(result), str(src), ml)
+	writeout(sorted(result), str(outlist), noc)
+
 
 if __name__ == '__main__':
 	main()
