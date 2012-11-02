@@ -1,30 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from collections import defaultdict
 
-def mkdict(file):
-	d = defaultdict(list)
-	with open(file, 'r') as f:
-		for line in f.readlines():
-			if line[0].isupper(): continue
-			word = line.strip()
-			key = ''.join(sorted(word.lower()))
-			d[key].append(word)
-	return d
+def mklist(file):
+	l = []
+	f = open(file, 'r')
+	for line in f.readlines():
+		word = line.strip()
+		l.append(word)
+	f.close()
+	return l
 
-def contains(word, candidate):
-	wchars = (c for c in word)
-	for cc in candidate:
-		while(True):
-			try:
-				wc = wchars.next()
-			except StopIteration:
-				return False
-			if wc < cc: continue
-			if wc == cc: break
-			return False
-	return True
 
 def writeout(lst, name, noc):
 	t = open(name+'.txt', 'w')
@@ -33,17 +19,32 @@ def writeout(lst, name, noc):
 			t.write(line+'\n')
 	t.close()
 
+
 def main():
-	dc = mkdict('dict.txt')
+	worlist = mklist('dict.txt')
+	chars = raw_input("Letterpress Characters: ")
 	
-	src = raw_input("Letterpress Characters: ")
-	
-	w = sorted(src)
 	result = []
-	for k in dc.keys():
-		if contains(w, k): result.extend(dc[k])
+
+	for word in worlist:
+		if set(word).issubset(set(chars)):
+			for letter in word:
+				if word.count(letter) <= chars.count(letter):
+					goodWord = True
+				else:
+					goodWord = False
+					break
+
+		else:
+			goodWord = False
+			
+		if goodWord:
+			result.append(word)
+		else:
+			continue
 	
-	writeout(sorted(result), str(src), 8)
+	writeout(sorted(result), str(chars), 8)
+
 
 if __name__ == '__main__':
 	main()
