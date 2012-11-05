@@ -46,7 +46,7 @@ def main():
 	else: chars = entry.charseq
 
 	wordlist = mklist(setdefault(entry.dictpath, 'dict.txt'))
-	noc = setdefault(int(entry.noc), 8)
+	noc = setdefault(entry.noc, 8)
 	outlist = setdefault(entry.out, chars)
 
 
@@ -67,7 +67,7 @@ def main():
 		if goodWord:
 			result.append(word)
 	
-	writeout(sorted(result), str(outlist), noc)
+	writeout(sorted(result), str(outlist), int(noc))
 
 
 if __name__ == '__main__':
