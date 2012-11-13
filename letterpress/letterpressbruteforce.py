@@ -66,8 +66,9 @@ def main():
 			
 		if goodWord:
 			result.append(word)
-	
-	writeout(sorted(result), str(outlist), int(noc))
+
+	restult = result.sort(key=lambda s: len(s), reverse=True)
+	writeout(result, str(outlist), int(noc))
 
 
 if __name__ == '__main__':
