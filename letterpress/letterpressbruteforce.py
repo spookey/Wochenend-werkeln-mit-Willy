@@ -29,7 +29,7 @@ def writeout(lst, name, noc):
 def aparse():
 	parser = argparse.ArgumentParser(description='Letterpress')
 	parser.add_argument('-c', action='store', dest='charseq', help='Gib die 25 Buchstaben gleich als Argument an')
-	parser.add_argument('-d', action='store', dest='dictpath', help='Ort der dict.txt')
+	parser.add_argument('-d', action='store', dest='dictpath', help='Ort der dict.dat')
 	parser.add_argument('-o', action='store', dest='out', help='Wohin soll die Ausgabe gespeichert werden ?')
 	parser.add_argument('-n', action='store', dest='noc', help='Buchstaben mindestlänge')
 	parser.add_argument('--version', action='version', version='%(prog)s - it\'s over 9000!!!!1!einself!')
@@ -45,7 +45,7 @@ def main():
 	if entry.charseq is None: chars = raw_input("Letterpress Characters: ")
 	else: chars = entry.charseq
 
-	wordlist = mklist(setdefault(entry.dictpath, 'dict.txt'))
+	wordlist = mklist(setdefault(entry.dictpath, 'dict.dat'))
 	noc = setdefault(entry.noc, 8)
 	outlist = setdefault(entry.out, chars)
 
