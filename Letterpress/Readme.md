@@ -1,7 +1,7 @@
 Letterpress Megaphony
 =====================
 
-**Seit Version 1.4 hat sich das Format des Wörterbuchs geändert. Keine Zeit/Lust mich um was neues zu kümmern. Sorry.**
+**Seit Version 1.4 hat sich das Format des Wörterbuchs geändert. Keine Zeit/Lust mich um was neues zu kümmern. Sorry.** :chicken:
 
 
 So richtig Python kann ich ja nicht, aber da nur Übung den Meister macht habe ich mal eben ein kleines Script geschrieben, dass einem so richtig arg bei Letterpress schummeln lässt..

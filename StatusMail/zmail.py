@@ -7,6 +7,7 @@ from subprocess import Popen, PIPE
 
 if __name__ == '__main__':
     logger.info('begin zmail')
+    logger.info('-' * 11)
 
     message = 'R300 berichtet:\n'
 
@@ -19,4 +20,7 @@ if __name__ == '__main__':
     else:
         logger.info('zpool status: %s' %(zpoolstatus))
 
+
     send_mail(['mail@example.com'], message, subject = 'R300 Status', subjectdate = True, files = ['/data/freenas-v1.db'])
+    logger.info('end zmail')
+    logger.info('-' * 9)

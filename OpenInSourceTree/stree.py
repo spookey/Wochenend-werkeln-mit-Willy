@@ -3,11 +3,11 @@
 
 from os import path, listdir, curdir
 from subprocess import Popen, PIPE
+
 '''
 working inside a git repository you need a quick overview?
 type stree from anywhere within the repository to open it in SourceTree
 '''
-
 
 def  walk_up(bottom):
     '''

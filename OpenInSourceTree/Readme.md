@@ -1,7 +1,7 @@
 # Open in Source Tree
 
-* in einen `$PATH` Ordner legen
-* `chmod +x`
-* im repo `stree.py` eintippen, ums in SourceTree zu &ouml;ffnen
+* Skript in einen Ordner von `$PATH` legen
+* `chmod +x` stree.py
+* im repo `stree.py` eingeben, schon landet man in SourceTree
 
 :smiley_cat: :kissing_cat: :heart_eyes_cat:
