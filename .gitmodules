@@ -1,0 +1,3 @@
+[submodule "StatusMail/notify"]
+	path = StatusMail/notify
+	url = https://spookey@github.com/spookey/drive-me-insane.git

@@ -1,6 +1,9 @@
 Letterpress Megaphony
 =====================
 
+**Seit Version 1.4 hat sich das Format des Wörterbuchs geändert. Keine Zeit/Lust mich um was neues zu kümmern. Sorry.**
+
+
 So richtig Python kann ich ja nicht, aber da nur Übung den Meister macht habe ich mal eben ein kleines Script geschrieben, dass einem so richtig arg bei Letterpress schummeln lässt..
 
 **Du willst auch schummeln?**
@@ -17,7 +20,7 @@ Als Resultat werden Textdateien mit möglichen Kombinationen (über 8 Buchstaben
 
 
 Viel Spaß!
-	
+
 	/*
 	* ----
 	* "THE BEER-WARE LICENSE" (Revision 42):
