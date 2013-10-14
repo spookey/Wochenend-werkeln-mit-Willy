@@ -3,11 +3,12 @@
 
 from os import path, listdir, curdir
 from subprocess import Popen, PIPE
-
+from sys import argv
 '''
 working inside a git repository you need a quick overview?
 type stree from anywhere within the repository to open it in SourceTree
 '''
+
 
 def  walk_up(bottom):
     '''
@@ -15,7 +16,6 @@ def  walk_up(bottom):
     https://gist.github.com/zdavkeos/1098474
     '''
 
-    bottom = path.realpath(bottom)
     try:
         names = listdir(bottom)
     except Exception as e:
@@ -44,7 +44,11 @@ def launch_stree(folderarg):
     print '😺'
 
 if __name__ == '__main__':
-    for current, folders, files in walk_up(curdir):
+
+    if len(argv) > 1:
+        if path.exists(path.realpath(argv[-1])):
+            curdir = path.realpath(argv[-1])
+    for current, folders, files in walk_up(path.realpath(curdir)):
         print current,
         if '.git' in folders:
             print '😻'
