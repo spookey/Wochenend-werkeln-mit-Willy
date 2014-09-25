@@ -1,23 +1,16 @@
-Letterpress Megaphony
+#Letterpress Megaphony
 =====================
-
-**Seit Version 1.4 hat sich das Format des Wörterbuchs geändert. Keine Zeit/Lust mich um was neues zu kümmern. Sorry.** :chicken:
-
 
 So richtig Python kann ich ja nicht, aber da nur Übung den Meister macht habe ich mal eben ein kleines Script geschrieben, dass einem so richtig arg bei Letterpress schummeln lässt..
 
-**Du willst auch schummeln?**
-*Dann brauchst du ein Wörterbuch!*
+**Auch schummeln?**
+*Gerne!*
 
-Als erstes wird die Letterpress.ipa mit dem Entpacker des geringsten Misstrauens ausgepackt. Es finden sich dann unter /Payload/Letterpress.app/o/ eine Menge Textdateien. Dies ist das (aufgeteilte) Wörterbuch für Letterpress.
+Hinweise zur Benutzung erhält man mittels ``./letterpressbruteforce.py --help``
 
-Um sich sein eigenes zu backen reicht eigentlich:
+**Seit Version 1.4 hat sich das Format des Wörterbuchs geändert.**
 
-`cat *.txt > dict.txt`
-
-Die dict.txt kommt zusammen mit dem Script in den selben Pfad, dann müsste alles laufen.
-Als Resultat werden Textdateien mit möglichen Kombinationen (über 8 Buchstaben) erzeugt.
-
+Ein Wörterbuch aus dieser Version ist mit dabei, deckt wohl immerhin noch 98% der Wörter ab.
 
 Viel Spaß!
 
